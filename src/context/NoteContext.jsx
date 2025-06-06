@@ -2,6 +2,7 @@ import React, { Children, createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
+
 export const NoteContext = createContext();
 
 const NoteContextProvider = ({ children }) => {
@@ -13,6 +14,7 @@ const NoteContextProvider = ({ children }) => {
   const [note, setNote] = useState("");
   const [num, setNum] = useState(0);
   const [todoList, setTodoList] = useState([]); 
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     document.querySelector("html").classList = theme;
@@ -67,6 +69,7 @@ const NoteContextProvider = ({ children }) => {
     setEdit(ele.id);
     setNote(ele.note || "")
     setTodoList(ele.todos || [])
+    setShowModal(true)
     
   }
   function handleUpdate() {
@@ -93,6 +96,7 @@ const NoteContextProvider = ({ children }) => {
     setNote("");
     setTodoList([]);
     setNum(0);
+    setShowModal(false)
   
    
   }
@@ -126,6 +130,7 @@ const NoteContextProvider = ({ children }) => {
           setCount,
           setTheme,
           handleTodo,
+          setShowModal,
           
         }}
       >

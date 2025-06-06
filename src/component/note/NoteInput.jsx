@@ -32,7 +32,7 @@ const NoteInput = () => {
             placeholder="add Title..."
             required
           />
-           <input type="checkbox" onChange={() => { setNum(1); setCount(false)}} className="translate-x-[-90px] translate-y-[20px] absolute" />
+           <input type="checkbox"onChange={() => { setNum(1); setCount(false)}} className="translate-x-[-90px] translate-y-[20px] absolute" />
 
           
           {

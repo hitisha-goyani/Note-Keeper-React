@@ -47,6 +47,9 @@ const NoteContextProvider = ({ children }) => {
     toast("task added successfully...........");
 
     setTask("");
+    setNum(0)
+    setTodoList([])
+    setNote("")
   }
 
   function handleDel(id) {
@@ -64,7 +67,7 @@ const NoteContextProvider = ({ children }) => {
     setEdit(ele.id);
     setNote(ele.note || "")
     setTodoList(ele.todos || [])
- 
+    
   }
   function handleUpdate() {
     let newList = list.map((ele) => {
@@ -90,6 +93,7 @@ const NoteContextProvider = ({ children }) => {
     setNote("");
     setTodoList([]);
     setNum(0);
+  
    
   }
   console.log(list);

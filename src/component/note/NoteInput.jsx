@@ -2,8 +2,25 @@ import { useContext } from "react";
 import { NoteContext } from "../../context/NoteContext";
 
 const NoteInput = () => {
-  const { handleChange, handleTask, task ,edit,handleUpdate,count,setCount,note,setNote,num,setNum,newInput,handleTodo} = useContext(NoteContext);
+  const {
+    handleChange,
+    handleTask,
+    todoList,
+    task,
+    edit,
+    handleUpdate,
+    count,
+    setCount,
+    note,
+    setNote,
+    num,
+    setNum,
+    newInput,
+    handleTodo,
+    editId,
+  } = useContext(NoteContext);
 
+  console.log("edit -" + todoList);
   return (
     <div>
       <div className="max-w-md mx-auto mt-20 mb-10">
@@ -32,32 +49,35 @@ const NoteInput = () => {
             placeholder="add Title..."
             required
           />
-           <input type="checkbox"onChange={() => { setNum(1); setCount(false)}} className="translate-x-[-90px] translate-y-[20px] absolute" />
+          <input
+            type="checkbox"
+            onChange={() => {
+              setNum(1);
+              setCount(false);
+            }}
+            className="translate-x-[-90px] translate-y-[20px] absolute"
+          />
 
-          
-          {
-            !edit ?
+          {!edit ? (
             <button
-            onClick={handleTask}
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Add
-          </button>
-          :
-          <button
-            onClick={handleUpdate}
-            type="submit"
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-          Edit
-          </button>
-
-          }
-          
+              onClick={handleTask}
+              type="submit"
+              className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Add
+            </button>
+          ) : (
+            <button
+              onClick={handleUpdate}
+              type="submit"
+              className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Update
+            </button>
+          )}
         </div>
 
-         <div className="w-[90%]">
+        <div className="w-[90%]">
           {count && (
             <textarea
               value={note}
@@ -67,26 +87,25 @@ const NoteInput = () => {
               placeholder="Add Note"
             />
           )}
-          {
-            [...Array(num)].map((ele, index)=>(
-              
-                <input  
-                onChange={(e) => handleTodo(e, index)}
-            className="border shadow appearance-none rounded w-full py-1 px-3 mt-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder={`✅ Add Todo ${index}`}
-          />  
-            ))
-          }
+          {[...Array(num)].map((ele, index) => (
+            <input
+              onChange={(e) => handleTodo(e, index)}
+              className="border shadow appearance-none rounded w-full py-1 px-3 mt-2 text-black dark:text-white leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              value={todoList ? todoList[index] : ""}
+
+              placeholder={`✅ Add Todo ${index}`}
+            />
+          ))}
 
           {!!num && (
-          <button
-            onClick={newInput}
-            className="mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-4 rounded"
-          >
-            + Add New Input
-          </button>
-        )}
+            <button
+              onClick={newInput}
+              className="mt-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-4 rounded"
+            >
+              + Add New Input
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -94,6 +113,3 @@ const NoteInput = () => {
 };
 
 export default NoteInput;
-
-
-

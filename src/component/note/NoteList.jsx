@@ -5,38 +5,50 @@ import {
 } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { NoteContext } from "../../context/NoteContext";
-import Modal from "./Modal";
 
 const NoteList = () => {
-  const { list, handleDel, handleEdit, handleStatus, setShowModal,handlePin } =
-    useContext(NoteContext);
+  const {
+    list,
+    handleDel,
+    handleEdit,
+    handleStatus,
+    setShowModal,
+    handlePin,
+    updateThemeColor,
+  } = useContext(NoteContext);
   return (
     <>
       <div className="max-w-[70%] my-3 border  bg-slate-800 dark:bg-slate-200 border-slate-400 rounded-2xl shadow-amber-500 p-4 mx-auto">
         <div className="grid lg:grid-cols-4 md:grid-cols-3  sm:grid-cols-2  gap-2 ">
           {list.map((ele) => (
-            <div key={ele.id} className="rounded-md border border-slate-700 py-6 px-2 text-white dark:text-slate-700"
+            <div
+              key={ele.id}
+              className={`rounded-md border  border-slate-700 py-6 px-2 text-white ${ele.themeColor} dark:text-slate-700`}
             >
               <div className="flex justify-between">
                 <h4 className="font-bold ">{ele.task}</h4>
                 <button
-                onClick={() => handlePin(ele.id)}
-                className={`rounded-full p-1 ms-2 ${
-                  ele.pinned ? "bg-slate-800 text-black" : "bg-gray-100"
-                }`}
-              >
-                📌
-              </button>
+                  onClick={() => handlePin(ele.id)}
+                  className={`rounded-full p-1 ms-2 ${
+                    ele.pinned ? "bg-slate-800 text-black" : "bg-gray-100"
+                  }`}
+                >
+                  📌
+                </button>
               </div>
-              
-              
 
+              <select
+                value={ele.themeColor}
+                onChange={(e) => updateThemeColor(ele.id, e.target.value)}
+                className="my-2 p-1 rounded text-sm"
+              >
+                <option value="bg-blue-100"><div className="rounded-full bg-blue-100 border"></div></option>
+                <option value="bg-green-100">Green</option>
+                <option value="bg-yellow-100">Yellow</option>
+                <option value="bg-pink-100">Pink</option>
+                <option value="bg-purple-100">Purple</option>
+              </select>
 
-
-
-
-
-              
               <p
                 onClick={() => handleStatus(ele.id)}
                 className={
@@ -105,9 +117,7 @@ const NoteList = () => {
                 className=" rounded-full p-1 bg-gray-100  dark:bg-slate-900 hover:bg-gray-200 ms-2"
               >
                 <PencilSquareIcon className="size-5 text-blue-500" />
-                <Modal />
               </button>
-              <Modal />
             </div>
           ))}
         </div>

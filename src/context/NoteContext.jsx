@@ -22,7 +22,20 @@
       document.querySelector("html").classList = theme;
     }, [theme]);
 
-    
+    useEffect(()=>
+    {
+      getlocal()
+    },[])
+
+    function setLocal(t){
+      localStorage.setItem("noteTask" ,JSON.stringify(t) )
+      getlocal()
+    }
+
+    function getlocal(){
+      let arr= JSON.parse(localStorage.getItem("noteTask")) || []
+      setList(arr)
+    }
   
   
 
@@ -42,7 +55,7 @@
     }
 
     function handleTask() {
-      setList([
+      let newList = [
         ...list,
         {
           id: uuidv4(),
@@ -50,18 +63,19 @@
           note,
           todos: todoList.filter((ele) => ele !== ""),
           status: false,
+          pinned:false,
+          themeColor: "bg-blue-100",
         
         },
-      ]);
+      ]
       toast("task added successfully...........");
 
       setTask("");
       setNum(0);
       setTodoList([]);
       setNote("");
-      setCount(false);
-
-      
+      setCount(false)
+      setLocal(newList)
     
     }
 
@@ -69,6 +83,7 @@
       const del = list.filter((ele) => ele.id !== id);
       setList(del);
       toast.info("Task Deleted......");
+      setLocal(del)
     }
 
 
@@ -101,6 +116,14 @@
         
     
     }
+
+    const updateThemeColor = (id, color) => {
+  setList(prev =>
+    prev.map(item =>
+      item.id === id ? { ...item, themeColor: color } : item
+    )
+  );
+};
     function handleUpdate() {
       let newList = list.map((ele) => {
         if (ele.id == edit) {
@@ -125,6 +148,7 @@
       setTodoList([]);
       setNum(0);
       setShowModal(false);
+      setLocal(newList)
     }
     console.log(list);
 
@@ -145,6 +169,7 @@
             handleUpdate,
             handleStatus,
             newInput,
+            updateThemeColor,
             task,
             list,
             edit,

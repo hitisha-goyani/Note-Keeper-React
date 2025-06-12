@@ -8,7 +8,9 @@ function App() {
   const { setTheme } = useContext(NoteContext);
 
   return (
+   
     <div className="bg-amber-50 dark:bg-slate-800  h-screen relative">
+       <h1 className="dark:text-white text-black text-5xl text-center pt-10">Note keeper</h1>
       <div className="flex justify-end">
         <button
           onClick={() => setTheme("dark")}

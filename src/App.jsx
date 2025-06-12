@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./App.css";
 import Note from "./component/note/Note";
 import { NoteContext } from "./context/NoteContext";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import { MoonIcon, PencilIcon, SunIcon } from "@heroicons/react/24/solid";
 
 function App() {
   const { setTheme } = useContext(NoteContext);
@@ -10,7 +10,9 @@ function App() {
   return (
    
     <div className="bg-amber-50 dark:bg-slate-800  h-screen relative">
-       <h1 className="dark:text-white text-black text-5xl text-center pt-10">Note keeper</h1>
+      <nav className="navbar navbar-light bg-light border border-amber-700 p-3 bg-gray-700 shadow-2xl ">
+  <a className="navbar-brand font-bold text-2xl" href="#"><PencilIcon className="size-6"></PencilIcon>Note Keeper</a>
+</nav>
       <div className="flex justify-end">
         <button
           onClick={() => setTheme("dark")}

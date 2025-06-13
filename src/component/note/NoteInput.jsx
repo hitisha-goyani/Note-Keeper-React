@@ -17,7 +17,7 @@ const NoteInput = () => {
     setNum,
     newInput,
     handleTodo,
-    editId,
+  
   } = useContext(NoteContext);
 
   console.log("edit -" + todoList);
@@ -50,10 +50,11 @@ const NoteInput = () => {
             required
           />
           <input
-            type="checkbox"
+            type="checkbox" checked={!!num}
             onChange={() => {
-              setNum(1);
+              setNum(num ? 0 :1 );
               setCount(false);
+              
             }}
             className="translate-x-[-90px] translate-y-[20px] absolute"
           />
@@ -66,7 +67,7 @@ const NoteInput = () => {
             >
               Add
             </button>
-          ) : (
+           ) : (
             <button
               onClick={handleUpdate}
               type="submit"

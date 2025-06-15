@@ -13,8 +13,9 @@
     const [note, setNote] = useState("");
     const [num, setNum] = useState(0);
     const [todoList, setTodoList] = useState([]);
-    const [showModal, setShowModal] = useState(false);
     const [editId, setEditId] = useState("");
+  
+  const [open, setOpen] = useState(false);
 
 
 
@@ -112,7 +113,7 @@
       }
       setNum(ele.todos.length);
       setTodoList(ele.todos || []);
-      setShowModal(true);
+      
         
     
     }
@@ -183,8 +184,10 @@
             handleTodo,
             todoList,
             editId,
-            setShowModal,
-            handlePin
+          
+            handlePin,
+           open, 
+           setOpen
           }}
         >
           {children}

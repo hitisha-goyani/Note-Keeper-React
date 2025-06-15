@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { NoteContext } from "../../context/NoteContext";
+import ColorPicker from "../ColorPicker";
 
 const NoteList = () => {
   const {
@@ -18,12 +19,15 @@ const NoteList = () => {
   } = useContext(NoteContext);
   return (
     <>
-      <div className="max-w-[70%] my-3   rounded-2xl shadow-amber-500 p-1 mx-auto">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2  sm:grid-cols-2 grid-cols-1 gap-3 ">
+      <div className="max-w-[70%] my-3  rounded-2xl shadow-amber-500 p-1 mx-auto">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2  sm:grid-cols-2 grid-cols-1 gap-5">
           {list.map((ele) => (
             <div
               key={ele.id}
-              className={`rounded-md border  border-slate-700 py-6 px-2 text-white ${ele.themeColor} dark:text-slate-700`}
+              className={`rounded-md bg-[#b7b8e1]  shadow-2xl py-6 px-2 text-white
+                 
+                  dark:text-slate-700`}
+                  //  style={{boxShadow: "8px 8px 6px 0px rgba(147, 149, 211, 1)"}}
             >
               <div className="flex justify-between">
                 <h4 className="font-bold  text-black  ">{ele.task}</h4>
@@ -95,9 +99,9 @@ const NoteList = () => {
                 <div>
                   <button
                     onClick={() => handleDel(ele.id)}
-                    className=" rounded-full p-1 bg-gray-100 dark:bg-slate-900 hover:bg-gray-200"
+                    className=" rounded-full p-1 bg-[#7E6551]  hover:bg-gray-200"
                   >
-                    <TrashIcon className="size-5 text-red-400" />
+                    <TrashIcon className="size-5 text-[#e4dbd5]" />
                   </button>
                 </div>
                 <div>
@@ -106,12 +110,12 @@ const NoteList = () => {
                       handleEdit(ele);
                       setShowModal(false);
                     }}
-                    className=" rounded-full p-1 bg-gray-100  dark:bg-slate-900 hover:bg-gray-200 ms-2"
+                    className=" rounded-full p-1 bg-[#7E6551] hover:bg-gray-200 ms-2"
                   >
-                    <PencilSquareIcon className="size-5 text-blue-500" />
+                    <PencilSquareIcon className="size-5 text-[#e4dbd5]" />
                   </button>
                 </div>
-                <div>
+                {/* <div>
                   <select
                     value={ele.themeColor}
                     onChange={(e) => updateThemeColor(ele.id, e.target.value)}
@@ -124,8 +128,35 @@ const NoteList = () => {
                     <option value="bg-purple-100">Purple🟣</option>
                     <option value="bg-red-100">Red🔴</option>
                   </select>
-                </div>
+                </div> */}
               </div>
+              {/* <div className="flex gap-2 my-2 ms-2">
+                  {[
+                    { color: "bg-blue-100", label: "Blue 🔵" },
+                    { color: "bg-green-100", label: "Green 🟢" },
+                    { color: "bg-yellow-100", label: "Yellow 🟡" },
+                    { color: "bg-orange-100", label: "Orange 🟠" },
+                    { color: "bg-purple-100", label: "Purple 🟣" },
+                    { color: "bg-red-100", label: "Red 🔴" },
+                  ].map(({ color, label }) => (
+                    <div
+                      key={color}
+                      onClick={() => updateThemeColor(ele.id, color)}
+                      className={`w-6 h-6 rounded-full border-2 ${
+                        ele.themeColor === color
+                          ? "border-black"
+                          : "border-gray-400"
+                      } ${color}`}
+                      title={label}
+                    ></div>
+                  ))}
+                </div> */}
+
+              {/* <ColorPicker
+                key={ele.id}
+                ele={ele}
+                updateThemeColor={updateThemeColor}
+              /> */}
             </div>
           ))}
         </div>

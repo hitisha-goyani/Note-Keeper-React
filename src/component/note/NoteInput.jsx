@@ -17,6 +17,7 @@ const NoteInput = () => {
     setNum,
     newInput,
     handleTodo,
+   
   
   } = useContext(NoteContext);
 
@@ -27,7 +28,7 @@ const NoteInput = () => {
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3 ">
             <svg
-              className="w-4 h-4 text-[#181818]"
+              className="w-4 h-4 text-[#606876]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -45,7 +46,7 @@ const NoteInput = () => {
           <input
             value={task}
             onChange={handleChange}
-            className=" w-full p-4 ps-10 text-sm text-[#181818] border border-gray-300 rounded-lg bg-[#c9cae9] focus:ring-[#c9cae9] focus:border-[#c9cae9]   dark:placeholder-[#181818] dark:text-[#181818] dark:focus:ring-[#181818] dark:focus:border-[#181818;]"
+            className=" w-full p-4 ps-10 text-sm text-[#606876] border border-gray-300 rounded-lg shadow  dark:placeholder-[#181818] dark:text-[#181818] dark:focus:ring-[#181818] dark:focus:border-[#181818;]"
             placeholder="add Title..."
             required
           />
@@ -63,7 +64,7 @@ const NoteInput = () => {
             <button
               onClick={handleTask}
               type="submit"
-              className="text-[#181818] absolute end-2.5 bottom-2.5  bg-[#9395D3] hover:bg-[#9395D3] focus:ring-4 focus:outline-none focus:ring-[#7E6551] font-medium rounded-lg text-sm px-4 py-2   dark:focus:ring-[#7E6551]"
+              className="text-[#606876] border absolute end-2.5 bottom-2.5   focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2   dark:focus:ring-black"
             >
               Add
             </button>
@@ -71,7 +72,7 @@ const NoteInput = () => {
             <button
               onClick={handleUpdate}
               type="submit"
-              className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="text-[#606876] absolute end-2.5 bottom-2.5 border focus:ring-black  font-medium rounded-lg text-sm px-4 py-2"
             >
               Update
             </button>
@@ -83,15 +84,15 @@ const NoteInput = () => {
             <textarea
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              className="shadow m-2 bg-[#dbdcf0] appearance-none border-0 rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow m-2  appearance-none border border-[#606876] rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
-              placeholder="Add Note"
+              placeholder="Take a note....."
             />
           )}
           {[...Array(num)].map((ele, index) => (
             <input
               onChange={(e) => handleTodo(e, index)}
-              className="border border-[#9395D3] shadow appearance-none rounded w-full py-1 px-3 mt-2 text-black dark:text-white leading-tight focus:outline-none focus:shadow-outline"
+              className="border border-[#eeeeee] shadow appearance-none rounded w-full py-1 px-3 mt-2 text-black  leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               value={todoList ? todoList[index] : ""}
 
@@ -102,13 +103,14 @@ const NoteInput = () => {
           {!!num && (
             <button
               onClick={newInput}
-              className="mt-2 bg-[#9395D3] text-white font-semibold py-1 px-4 rounded"
+              className="mt-2 bg-[#fdefc2] text-slate-700 font-semibold py-1 px-4 rounded"
             >
-              + Add New Input
+              + Add New Todo
             </button>
           )}
         </div>
       </div>
+      
     </div>
   );
 };

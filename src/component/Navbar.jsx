@@ -10,20 +10,20 @@ const Navbar = () => {
     <div>
       <nav className="navbar  p-5 shadow-2xl flex justify-between bg-white">
   <a className="navbar-brand font-bold text-2xl flex" href="#">
-    <RiEditCircleFill className="size-6 me-2 mt-1"></RiEditCircleFill>Note Keeper</a>
+    <RiEditCircleFill className="size-6 me-2 mt-1 text-[#fabd03]"></RiEditCircleFill>Note  <span className='ms-1 text-[#606876]'>Keeper</span></a>
      <div className="">
         
         <button
           onClick={() => setTheme("dark")}
-          className=" border py-1 rounded-sm px-4  me-2  shadow"
+          className=" border border-[#606876] py-1 rounded-sm px-4  me-2  shadow"
         >
-          <SunIcon className="size-6 "></SunIcon>
+          <SunIcon className="size-6 text-[#606876]"></SunIcon>
         </button>
         <button
           onClick={() => setTheme("light")}
-          className=" border py-1 rounded-sm px-4  shadow"
+          className=" border border-[#606876] py-1 rounded-sm px-4  shadow"
         >
-          <MoonIcon className="size-6 "></MoonIcon>
+          <MoonIcon className="size-6 text-[#606876]"></MoonIcon>
         </button>
       </div>
 </nav>

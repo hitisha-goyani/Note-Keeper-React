@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import NoteList from "./note/NoteList";
+import { useContext } from "react";
 import { NoteContext } from "../context/NoteContext";
 
 // Inside your component:
@@ -8,6 +7,7 @@ function ColorPicker({ ele, updateThemeColor }) {
   const{open, setOpen } = useContext(NoteContext)
 
   const colors = [
+    {color:"bg-white"},
     { color: "bg-blue-100" },
     { color: "bg-green-100"},
     { color: "bg-yellow-100" },
@@ -21,7 +21,7 @@ function ColorPicker({ ele, updateThemeColor }) {
       
       <div
         onClick={() => setOpen((prev) => !prev)}
-        className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center cursor-pointer"
+        className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center "
         title="Click to select color"
       >
         🎨

@@ -14,8 +14,7 @@
     const [num, setNum] = useState(0);
     const [todoList, setTodoList] = useState([]);
     const [editId, setEditId] = useState("");
-  
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
 
 
@@ -65,7 +64,8 @@
           todos: todoList.filter((ele) => ele !== ""),
           status: false,
           pinned:false,
-          themeColor: "bg-blue-100",
+          themeColor: "",
+          timestamp: new Date().toISOString(),
         
         },
       ]
@@ -148,7 +148,6 @@
       setNote("");
       setTodoList([]);
       setNum(0);
-      setShowModal(false);
       setLocal(newList)
     }
     console.log(list);
@@ -184,10 +183,10 @@
             handleTodo,
             todoList,
             editId,
-          
             handlePin,
            open, 
-           setOpen
+           setOpen,
+         
           }}
         >
           {children}

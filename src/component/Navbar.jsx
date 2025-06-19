@@ -8,9 +8,9 @@ const Navbar = () => {
     const { setTheme } = useContext(NoteContext);
   return (
     <div>
-      <nav className="navbar  p-5 shadow-2xl flex justify-between bg-white">
+      <nav className="navbar  p-5 shadow-2xl flex justify-between dark:bg-white bg-[#202124]">
   <a className="navbar-brand font-bold text-2xl flex" href="#">
-    <RiEditCircleFill className="size-6 me-2 mt-1 text-[#fabd03]"></RiEditCircleFill>Note  <span className='ms-1 text-[#606876]'>Keeper</span></a>
+    <RiEditCircleFill className="size-6 me-2 mt-1 text-[#fabd03]"></RiEditCircleFill> <span className='ms-1 text-[#606876]'> Note Keeper</span></a>
      <div className="">
         
         <button

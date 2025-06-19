@@ -8,12 +8,15 @@ function App() {
 
   return (
    
-    <div className="dark:bg-white bg-[#181818]  relative">
+    <div className="dark:bg-white bg-[#202124]">
+       <div className=" relative">
       <Navbar/>
      
 
       <Note />
     </div>
+    </div>
+   
   );
 }
 

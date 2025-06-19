@@ -89,14 +89,14 @@
     }
 
 
-  function handlePin(id) {
-    const itemPin = list.find((item) => item.id === id);
-    if (!itemPin) 
-      return;
-    const remain = list.filter((item) => item.id !== id);
-    const pinnedItem = { ...itemPin, pinned: true };
-    setList([pinnedItem, ...remain]);
-  }   
+  // function handlePin(id) {
+  //   const itemPin = list.find((item) => item.id === id);
+  //   if (!itemPin) 
+  //     return;
+  //   const remain = list.filter((item) => item.id !== id);
+  //   const pinnedItem = { ...itemPin, pinned: true };
+  //   setList([pinnedItem, ...remain]);
+  // }   
 
 
     const newInput = () => {  
@@ -154,10 +154,14 @@
     console.log(list);
 
     function handleStatus(id) {
-      setList(
+      let status =
         list.map((ele) => (ele.id == id ? { ...ele, status: !ele.status } : ele))
-      );
+      
+      setLocal(status)
     }
+
+    
+    
 
     return (
       <div>
@@ -184,7 +188,7 @@
             handleTodo,
             todoList,
             editId,
-            handlePin,
+          
            open, 
            setOpen,
            openMenu, 

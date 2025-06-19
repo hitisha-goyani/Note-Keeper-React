@@ -17,11 +17,11 @@ function ColorPicker({ ele, updateThemeColor }) {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-2 my-2 ms-2">
+    <div className="flex flex-col items-start gap-2">
       
       <div
         onClick={() => setOpen((prev) => !prev)}
-        className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center "
+        className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center p-3"
         title="Click to select color"
       >
         🎨

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NoteContext } from "../../context/NoteContext";
+import { PencilIcon, PencilSquareIcon, PlusCircleIcon, PlusIcon } from "@heroicons/react/24/solid";
 
 const NoteInput = () => {
   const {
@@ -46,7 +47,7 @@ const NoteInput = () => {
           <input
             value={task}
             onChange={handleChange}
-            className=" w-full p-4 ps-10 text-sm text-[#606876] border border-gray-300 rounded-lg shadow  dark:placeholder-[#181818] dark:text-[#181818] dark:focus:ring-[#181818] dark:focus:border-[#181818;]"
+            className=" w-full p-4 ps-10 text-sm dark:text-[#606876] text-[#525355]  rounded-full border border-gray-300  shadow  dark:placeholder-[#525355]  dark:focus:border-[#181818;]"
             placeholder="add Title..."
             required
           />
@@ -57,24 +58,24 @@ const NoteInput = () => {
               setCount(false);
               
             }}
-            className="translate-x-[-90px] translate-y-[20px] absolute"
+            className="translate-x-[-70px] translate-y-[20px] absolute"
           />
 
           {!edit ? (
             <button
               onClick={handleTask}
               type="submit"
-              className="text-[#606876] border absolute end-2.5 bottom-2.5   focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2   dark:focus:ring-black"
+              className="dark:text-[#606876] text-[#525355]  border border-[#525355] rounded-full  absolute end-2.5 p-1 bottom-2.5  "
             >
-              Add
+              <PlusIcon className="size-6"></PlusIcon>
             </button>
            ) : (
             <button
               onClick={handleUpdate}
               type="submit"
-              className="text-[#606876] absolute end-2.5 bottom-2.5 border focus:ring-black  font-medium rounded-lg text-sm px-4 py-2"
+              className="dark:text-[#606876]  text-[#525355]  border border-[#525355] rounded-full p-1 absolute end-2.5 bottom-2.5 "
             >
-              Update
+              <PencilSquareIcon className="size-6"></PencilSquareIcon>
             </button>
           )}
         </div>
@@ -82,9 +83,11 @@ const NoteInput = () => {
         <div className="w-[90%]">
           {count && (
             <textarea
+            rows="4"
+            cols="15"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              className="shadow m-2  appearance-none border border-[#606876] rounded w-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow m-2  appearance-none border border-[#606876]  rounded w-full py-1 px-3 dark:text-gray-700  text-[#DAD7CD] leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="Take a note....."
             />
@@ -92,7 +95,7 @@ const NoteInput = () => {
           {[...Array(num)].map((ele, index) => (
             <input
               onChange={(e) => handleTodo(e, index)}
-              className="border border-[#eeeeee] shadow appearance-none rounded w-full py-1 px-3 mt-2 text-black  leading-tight focus:outline-none focus:shadow-outline"
+              className="border border-[#eeeeee] shadow appearance-none rounded w-full py-1 px-3 mt-2 dark:text-black text-[#DAD7CD]  leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               value={todoList ? todoList[index] : ""}
 
